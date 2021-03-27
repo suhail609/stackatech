@@ -21,10 +21,9 @@ app.get('/', (req,res) => {
 
 let dispValue = [];
 
-app.get('/::id', async (req,res) => {
+app.get('/users/game/::id', async (req,res) => {
     
     try {
-        console.log(req.params.id)
         data = await Level.findOne({
             Level_number: req.params.id
         })
@@ -45,7 +44,6 @@ app.get('/::id', async (req,res) => {
             i--
         }
         }
-        console.log(dispValue);
         res.send(dispValue);
         dispValue = []
 
