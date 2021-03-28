@@ -15,18 +15,33 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
+app.engine('.hbs', expHbs({
+    extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+
+
 app.get('/', (req,res) => {
     res.send('give Level_number as param')
 })
 
 let dispValue = [];
 
-app.get('/users/game/::id', async (req,res) => {
+
+app.get('/users/game', (req,res) => {
+    res.render('input')
+})
+
+
+app.post('/users/game/', async (req,res) => {
     
     try {
         data = await Level.findOne({
-            Level_number: req.params.id
+            Level_number: req.body.levelNumber
         })
+
+        let studentID = req.body.studentID;
+        console.log('requested student is ' + studentID);
 
         let num = data.Level_count
 

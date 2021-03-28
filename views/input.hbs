@@ -1,0 +1,25 @@
+<h1>Submit Student ID and Level Number</h1>
+
+
+<div>
+    <form name="sLevel" onsubmit="return validateForm()" action="/users/game" method="POST">
+        <label for="studentID">Student ID</label>
+        <input type="text" name="studentID">
+        <br><br>
+        <label for="levelNumber">Level Number</label>
+        <input type="number" name="levelNumber">
+        <br><br>
+        {{!-- <input type="submit" value="Save"> --}}
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        let x = document.forms['sLevel']['levelNumber'].value;
+        if(x < 1 || x > 3){
+            alert('enter valid level number');
+            return false;
+        }
+    }
+</script>
