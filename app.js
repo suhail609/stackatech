@@ -51,7 +51,7 @@ app.post('/users/game/', async (req,res) => {
     
             random = Math.floor(Math.random()*10)
             
-            if(random !== lastNum && random !== random + 1 && random !== 0){
+            if(random !== lastNum && !(dispValue.includes(random)) && random !== 0){
             lastNum = random
                 
         dispValue.push(random)
@@ -66,6 +66,12 @@ app.post('/users/game/', async (req,res) => {
         console.error(error)
     }
 })
+
+
+
+
+
+
 
 
 
